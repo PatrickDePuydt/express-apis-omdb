@@ -15,7 +15,8 @@ app.use(ejsLayouts); // Enables EJS Layouts middleware
 app.use(require('morgan')('dev')); // Adds some logging to each request
 
 app.get('/', (req, res) => {
-  res.send('Hello, backend!');
+  // res.send('Hello, backend!');
+  res.render('index');
 });
 
 let server = app.listen(process.env.PORT || 3000); // The app.listen function returns a server handle
