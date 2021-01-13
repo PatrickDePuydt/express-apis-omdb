@@ -1,28 +1,23 @@
-require('dotenv').config();
 const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
+
+require('dotenv').config();
 const app = express();
 
-// Sets EJS as the view engine
-app.set('view engine', 'ejs');
-// Specifies the location of the static assets folder
-app.use(express.static('static'));
-// Sets up body-parser for parsing form data
-app.use(express.urlencoded({ extended: false }));
-// Enables EJS Layouts middleware
-app.use(ejsLayouts);
 
-// Adds some logging to each request
-app.use(require('morgan')('dev'));
+app.set('view engine', 'ejs'); // Sets EJS as the view engine
+app.use(express.static('static')); // Specifies the location of the static assets folder
 
-// Routes
-app.get('/', function(req, res) {
+app.use(express.urlencoded({ extended: false })); // Sets up body-parser for parsing form data
+
+app.use(ejsLayouts); // Enables EJS Layouts middleware
+
+app.use(require('morgan')('dev')); // Adds some logging to each request
+
+app.get('/', (req, res) => {
   res.send('Hello, backend!');
 });
 
-// The app.listen function returns a server handle
-var server = app.listen(process.env.PORT || 3000);
+let server = app.listen(process.env.PORT || 3000); // The app.listen function returns a server handle
 
-// We can export this server to other servers like this
-// Test commit
-module.exports = server;
+module.exports = server; // We can export this server to other servers like this
