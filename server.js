@@ -15,8 +15,14 @@ app.use(ejsLayouts); // Enables EJS Layouts middleware
 app.use(require('morgan')('dev')); // Adds some logging to each request
 
 app.get('/', (req, res) => {
-  // res.send('Hello, backend!');
-  res.render('index', { dino: "DINOSAURRRrrrrr" });
+  // res.send('Hello, backend!')
+  res.render('index', { dino: "🦖" });
+  console.log(`🧼 v3 req.body: ${req.body}`);
+});
+
+app.get('/results', (req, res) => {
+  let results = req.query;
+  console.log(`⭐ req dot boddddayyy: ${results.search}`);
 });
 
 let server = app.listen(process.env.PORT || 3000); // The app.listen function returns a server handle
