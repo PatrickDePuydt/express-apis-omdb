@@ -16,7 +16,7 @@ app.use(require('morgan')('dev')); // Adds some logging to each request
 
 app.get('/', (req, res) => {
   // res.send('Hello, backend!');
-  res.render('index');
+  res.render('index', { dino: "DINOSAURRRrrrrr" });
 });
 
 let server = app.listen(process.env.PORT || 3000); // The app.listen function returns a server handle
