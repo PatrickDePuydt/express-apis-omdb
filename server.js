@@ -20,9 +20,10 @@ app.get('/', (req, res) => {
   console.log(`🧼 v3 req.body: ${req.body}`);
 });
 
-app.get('/results', (req, res) => {
+app.get('/results/:id', (req, res) => {
   let results = req.query;
-  console.log(`⭐ req dot boddddayyy: ${results.search}`);
+  console.log(`⭐ req dot boddddayyy: ${results.params}`);
+
 });
 
 let server = app.listen(process.env.PORT || 3000); // The app.listen function returns a server handle
