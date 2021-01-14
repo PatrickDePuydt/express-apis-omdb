@@ -19,12 +19,20 @@ app.get('/', (req, res) => {
   res.render('index', { dino: "🦖" });
   console.log(`🧼 v3 req.body: ${req.body}`);
 });
+// Params is passing into the URl
+// Query is for from the form
+app.get('/results', (req, res) => {
+  let results = req.query;
+  console.log(`🍷 req.query`, req.query);
+  
+  res.send('Fuck yeah');
+});
 
 app.get('/results/:id', (req, res) => {
   let results = req.query;
   console.log(`⭐ req dot boddddayyy: ${results.params}`);
-
 });
+
 
 let server = app.listen(process.env.PORT || 3000); // The app.listen function returns a server handle
 
