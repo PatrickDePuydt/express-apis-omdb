@@ -22,10 +22,10 @@ app.get('/', (req, res) => {
 // Params is passing into the URl
 // Query is for from the form
 app.get('/results', (req, res) => {
-  let results = req.query;
-  console.log(`🍷 req.query`, req.query);
+  let results = req.query.q;
+  console.log(`🍷 req.query.q`, req.query.q);
   
-  res.send('Fuck yeah');
+  res.send(results);
 });
 
 app.get('/results/:id', (req, res) => {
