@@ -1,5 +1,7 @@
+require('dotenv').config();
 const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
+const axios = require('axios').default;
 
 require('dotenv').config();
 const app = express();
@@ -22,15 +24,21 @@ app.get('/', (req, res) => {
 // Params is passing into the URl
 // Query is for from the form
 app.get('/results', (req, res) => {
-  let results = req.query.q;
-  console.log(`🍷 req.query.q`, req.query.q);
-  
-  res.send(results);
+  let results = req.query;
+  console.log(`🍷 req.query.s`, req.query);
+
+  axios.get(`http://www.omdbapi.com/?s=${results}&apikey=${process.env.OMDB}`)
+    .then(function (response) {
+      console.log(response.data.Search);
+  });
+
+  // res.send(results);
 });
 
 app.get('/results/:id', (req, res) => {
   let results = req.query;
-  console.log(`⭐ req dot boddddayyy: ${results.params}`);
+
+  console.log(`⭐⭐ req dot boddddayyy: ${results.params}`);
 });
 
 
