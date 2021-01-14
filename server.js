@@ -24,8 +24,8 @@ app.get('/', (req, res) => {
 // Params is passing into the URl
 // Query is for from the form
 app.get('/results', (req, res) => {
-  let results = req.query;
-  console.log(`🍷 req.query.s`, req.query);
+  let results = req.query.s;
+  console.log(`🍷 req.query.s`, req.query.s);
 
   axios.get(`http://www.omdbapi.com/?s=${results}&apikey=${process.env.OMDB}`)
     .then(function (response) {
