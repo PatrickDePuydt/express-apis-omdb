@@ -25,20 +25,22 @@ app.get('/', (req, res) => {
 // Query is for from the form
 app.get('/results', (req, res) => {
   let results = req.query.s;
-  console.log(`🍷 req.query.s`, req.query.s);
+  // console.log(`🍷 req.query.s`, req.query.s);
 
-  axios.get(`http://www.omdbapi.com/?s=${results}&apikey=${process.env.OMDB}`)
-    .then(function (response) {
-      console.log(response.data.Search);
+
+  axios.get(`http://www.omdbapi.com/?apikey=${process.env.API_KEY}&s=star+wars`)
+    .then((response) => {
+      console.log(`💎 response.data.search: `, response.data);
+      res.send(response.data)
   });
 
-  // res.send(results);
+  res.send(results);
 });
 
 app.get('/results/:id', (req, res) => {
   let results = req.query;
 
-  console.log(`⭐⭐ req dot boddddayyy: ${results.params}`);
+  // console.log(`⭐⭐ req dot boddddayyy: ${results.params}`);
 });
 
 
