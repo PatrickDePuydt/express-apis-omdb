@@ -24,19 +24,21 @@ app.get('/', (req, res) => {
 // Query is for from the form
 app.get('/results', (req, res) => {
   let results = req.query.s;
-
+  
   axios.get(`http://www.omdbapi.com/?apikey=${process.env.OMDB}&s=${results}`)
-    .then( (answer) => {
-      console.log(`💎 answer.data.search: `, answer.data);
-      res.send(answer.data)
+  .then( (answer) => {
+    let results = answer.data;
+    res.render('results', {
+      results: results.Search
+    });
   }).catch( error => console.log(`❌ Axios Error: `, error));
-
+  
 });
 
 app.get('/results/:id', (req, res) => {
-  let results = req.query;
-
-  console.log(`⭐⭐ req dot boddddayyy: ${req.body}`);
+  let resultId = req.query;
+  console.log(`🍩 resultId`, resultId)
+  res.render('/detail');
 });
 
 

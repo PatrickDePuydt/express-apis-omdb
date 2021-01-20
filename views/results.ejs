@@ -1,2 +1,11 @@
-<% // Render your search results here %>
+<h1>Results</h1>
+
+<% console.log(`👇 results`, results) %>
+<ul>
+<% results.forEach((result) => { %>
+  <li>
+    <%= result.Title %>
+  </li>
+<% }); %>
+</ul>
 <% // This is how to do comments in EJS, by the way... %>
