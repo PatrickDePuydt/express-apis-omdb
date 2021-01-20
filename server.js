@@ -36,7 +36,7 @@ app.get('/results', (req, res) => {
 app.get('/results/:id', (req, res) => {
   let results = req.query;
 
-  // console.log(`⭐⭐ req dot boddddayyy: ${results.params}`);
+  console.log(`⭐⭐ req dot boddddayyy: ${req.body}`);
 });
 
 
