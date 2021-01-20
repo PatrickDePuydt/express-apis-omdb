@@ -3,7 +3,7 @@
 <% console.log(`👇 results`, results) %>
 <ul>
 <% results.forEach((result) => { %>
-  <a href="results/<%result.imdbID%>" >
+  <a href="results/<%=result.imdbID%>" >
     <li>
       <%= result.Title %>
     </li>
