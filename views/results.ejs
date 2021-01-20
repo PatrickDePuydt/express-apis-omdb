@@ -3,9 +3,11 @@
 <% console.log(`👇 results`, results) %>
 <ul>
 <% results.forEach((result) => { %>
-  <li>
-    <%= result.Title %>
-  </li>
+  <a href="results/<%result.imdbID%>" >
+    <li>
+      <%= result.Title %>
+    </li>
+  </a>
 <% }); %>
 </ul>
 <% // This is how to do comments in EJS, by the way... %>

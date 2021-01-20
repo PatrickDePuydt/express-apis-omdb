@@ -24,7 +24,6 @@ app.get('/', (req, res) => {
 // Query is for from the form
 app.get('/results', (req, res) => {
   let results = req.query.s;
-  
   axios.get(`http://www.omdbapi.com/?apikey=${process.env.OMDB}&s=${results}`)
   .then( (answer) => {
     let results = answer.data;
@@ -32,7 +31,6 @@ app.get('/results', (req, res) => {
       results: results.Search
     });
   }).catch( error => console.log(`❌ Axios Error: `, error));
-  
 });
 
 app.get('/results/:id', (req, res) => {
