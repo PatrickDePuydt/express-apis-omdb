@@ -6,7 +6,6 @@ const axios = require('axios').default;
 require('dotenv').config();
 const app = express();
 
-
 app.set('view engine', 'ejs'); // Sets EJS as the view engine
 app.use(express.static('static')); // Specifies the location of the static assets folder
 
@@ -25,16 +24,13 @@ app.get('/', (req, res) => {
 // Query is for from the form
 app.get('/results', (req, res) => {
   let results = req.query.s;
-  // console.log(`🍷 req.query.s`, req.query.s);
 
+  axios.get(`http://www.omdbapi.com/?apikey=${process.env.OMDB}&s=${results}`)
+    .then( (answer) => {
+      console.log(`💎 answer.data.search: `, answer.data);
+      res.send(answer.data)
+  }).catch( error => console.log(`❌ Axios Error: `, error));
 
-  axios.get(`http://www.omdbapi.com/?apikey=${process.env.API_KEY}&s=star+wars`)
-    .then((response) => {
-      console.log(`💎 response.data.search: `, response.data);
-      res.send(response.data)
-  });
-
-  res.send(results);
 });
 
 app.get('/results/:id', (req, res) => {
