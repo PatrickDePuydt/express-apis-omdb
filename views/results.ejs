@@ -5,7 +5,10 @@
 <% results.forEach((result) => { %>
   <a href="results/<%=result.imdbID%>" >
     <li>
+      <img src="<%=result.Poster%>" alt="">
+      <p>
       <%= result.Title %>
+      </p>
     </li>
   </a>
 <% }); %>
