@@ -34,11 +34,10 @@ app.get('/results', (req, res) => {
 });
 
 app.get('/results/:id', (req, res) => {
-  let resultId = req.query;
+  let resultId = req.params.id;
   console.log(`🍩 resultId`, resultId)
-  res.render('/detail');
+  res.render('detail', {id: resultId});
 });
-
 
 let server = app.listen(process.env.PORT || 3000); // The app.listen function returns a server handle
 
