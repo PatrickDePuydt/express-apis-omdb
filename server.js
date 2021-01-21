@@ -27,6 +27,9 @@ app.get('/results', (req, res) => {
   axios.get(`http://www.omdbapi.com/?apikey=${process.env.OMDB}&s=${results}`)
   .then( (answer) => {
     let results = answer.data;
+    
+    console.log(`⭐⭐⭐⭐`, answer)
+    
     res.render('results', {
       results: results.Search
     });
@@ -35,7 +38,7 @@ app.get('/results', (req, res) => {
 
 app.get('/results/:id', (req, res) => {
   let resultId = req.params.id;
-  console.log(`🍩 resultId`, resultId)
+  // console.log(`🍩 resultId`, resultId)
   res.render('detail', {id: resultId});
 });
 
